@@ -1,0 +1,9 @@
+.myTable{
+
+}
+
+.myTable th{
+	padding: 10px;
+	marging: 10px;
+	border: 1px dotted gray;
+}

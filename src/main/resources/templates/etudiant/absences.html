@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Your Absences</title>
+</head>
+<body>
+<h2>Your Absences</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Number of Hours</th>
+        <th>Subject</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="absence : ${absences}">
+        <td th:text="${absence.id_absence}">1</td>
+        <td th:text="${absence.nb_h}">5</td>
+        <td th:text="${absence.matieres.name}">Mathematics</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

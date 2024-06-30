@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Absence</title>
+</head>
+<body>
+<h2>Create Absence</h2>
+<form th:action="@{/admin/absences}" th:object="${absence}" method="post">
+    <div>
+        <label for="nb_h">Number of Hours:</label>
+        <input type="number" id="nb_h" th:field="*{nb_h}" required />
+    </div>
+    <div>
+        <label for="user">User Name:</label>
+        <input type="text" id="user" th:field="*{user.name}" required />
+    </div>
+    <div>
+        <label for="matieres">Subject Name:</label>
+        <input type="text" id="matieres" th:field="*{matieres.nom}" required />
+    </div>
+    <div>
+        <button type="submit">Create</button>
+    </div>
+</form>
+</body>
+</html>

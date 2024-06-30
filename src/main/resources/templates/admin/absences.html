@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Absences</title>
+</head>
+<body>
+<h2>Absence List</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Number of Hours</th>
+        <th>User</th>
+        <th>Subject</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="absence : ${absences}">
+        <td th:text="${absence.id_absence}">1</td>
+        <td th:text="${absence.nb_h}">5</td>
+        <td th:text="${absence.user.name}">John Doe</td>
+        <td th:text="${absence.matieres.name}">Mathematics</td>
+        <td>
+            <a th:href="@{/absenc/absences/edit/{id}(id=${absence.id_absence})}">Edit</a>
+            <a th:href="@{/absenc/absences/delete/{id}(id=${absence.id_absence})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/admin/absences/new">Create New Absence</a>
+</body>
+</html>

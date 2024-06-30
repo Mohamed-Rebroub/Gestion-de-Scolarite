@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Files</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+          integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 30px;
+        }
+        table {
+            margin-bottom: 20px;
+        }
+        .no-files {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center">List of Files</h2>
+
+    <div th:if="${files.size() > 0}">
+        <table class="table table-hover table-bordered">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">Class</th>
+                <th scope="col">File Name</th>
+                <th scope="col">Link</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="file : ${files}">
+                <td th:text="${file.classe != null ? file.classe.nom : 'Unknown'}"></td>
+                <td th:text="${file.name}">File Name</td>
+                <td><a class="btn btn-primary" th:href="@{${file.url}}" role="button">Download</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:unless="${files.size() > 0}" class="no-files">
+        <span>No files found!</span>
+    </div>
+</div>
+
+</body>
+</html>
